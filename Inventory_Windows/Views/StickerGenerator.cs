@@ -88,6 +88,12 @@ namespace Inventory_Windows.Views
             }
             List<StickerData> stickerData = getStickerData();
 
+            if(stickerData.Count == 0)
+            {
+                MyDialog.info("Sticker Data Cannot be NULL");
+                return;
+            }
+
             Generator Generator = new Generator(institution, saveToPath);
             Generator.generateSticker(stickerData);
         }

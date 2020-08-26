@@ -44,9 +44,16 @@ namespace Inventory_Windows.Utils
         internal void generateSticker(List<StickerData> stickerData)
         {
             Debug.WriteLine("generateSticker , count: " + stickerData.Count);
-            for (int i = 0; i < stickerData.Count; i++)
+            try {
+                for (int i = 0; i < stickerData.Count; i++)
+                {
+                    generateOneSticker(stickerData[i]);
+                }
+
+                Process.Start("explorer.exe", @saveToPath);
+            }catch(Exception e)
             {
-                generateOneSticker(stickerData[i]);
+                MyDialog.info("ERROR :" + e.Message);
             }
         }
 
@@ -90,7 +97,7 @@ namespace Inventory_Windows.Utils
 
                     float stringXIndex = STICKER_HEIGHT + 3;
                     //Institution
-                    String institutionAlias = stickerData.institution.ToString();
+                    String institutionAlias = getInstitutionAlias(stickerData.institution);
                     //if (institutionAlias.length() <= 17)
                     //{
                     //    g2d.setFont(new Font("Arial", Font.BOLD, 13));
@@ -145,6 +152,12 @@ namespace Inventory_Windows.Utils
                 Debug.WriteLine("ERROR :" + e.Message);
             }
 
+        }
+
+        private string getInstitutionAlias(Institution institution)
+        {
+            //TODO: add attribute in the enums
+            return institution.ToString();
         }
     }
 }
