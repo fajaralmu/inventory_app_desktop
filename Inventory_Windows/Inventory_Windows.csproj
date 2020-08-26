@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Institution.cs" />
+    <Compile Include="Models\IntitutionInfo.cs" />
     <Compile Include="Models\StickerData.cs" />
     <Compile Include="Utils\Generator.cs" />
     <Compile Include="Utils\MyDialog.cs" />
@@ -100,7 +101,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\kiis.png">
