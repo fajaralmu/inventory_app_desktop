@@ -27,6 +27,8 @@ namespace Inventory_Windows.Utils
         const int PAPER_HEIGHT = 792;
         const int PAPER_WIDTH = 622;
 
+        private int count = 0;
+
 
         public Generator(Institution institution, string saveToPath)
         {
@@ -65,23 +67,23 @@ namespace Inventory_Windows.Utils
                     imgName = "kiis.jpg";
                 }
                 //get image
-                Image Image = Image.FromFile("Resources/"+imgName);
+                Image Image = Image.FromFile("Resources/" + imgName);
                 Debug.WriteLine("ResourceManager result :" + (Image == null ? "TRUE" : "FALSE" + Image.GetType()));
 
                 if (null != Image)
                 {
                     //write image 
                     PixelFormat pf = PixelFormat.Format32bppArgb;
-                    Bitmap BM = new Bitmap(STICKER_WIDTH, STICKER_HEIGHT, pf); //This is the Bitmap Image; you have not yet selected a file,
+                    Bitmap Canvas = new Bitmap(STICKER_WIDTH, STICKER_HEIGHT, pf); //This is the Bitmap Image; you have not yet selected a file,
                     Brush BackgroundBrush = new SolidBrush(Color.White);                               //Bitmap BM = new Bitmap(Image.FromFile(@"D:\Resources\International\Picrofo_Logo.png"), rect.Width, rect.Height);
 
-                    Graphics g = Graphics.FromImage(BM);
+                    Graphics g = Graphics.FromImage(Canvas);
 
                     //draw background 
                     g.FillRectangle(BackgroundBrush, 0, 0, STICKER_WIDTH, STICKER_HEIGHT);
 
                     //draw logo
-                    g.DrawImage(Image, 3, 3, 60, 60);
+                    g.DrawImage(Image, 3, 2, 60, 60);
 
                     //draw content
                     //g2d.setColor(Color.BLACK);
@@ -100,38 +102,30 @@ namespace Inventory_Windows.Utils
                     Font Font = new Font("Arial", 8);
                     Font TitleFont = new Font("Arial", 8, FontStyle.Bold);
 
-                    int reducer = 11;
-                    g.DrawString(stickerData.institution.ToString(), TitleFont, fontBrush, stringXIndex, 15 - reducer);
+                    int reducer = 12;
+                    g.DrawString(institutionAlias, TitleFont, fontBrush, stringXIndex, 15 - reducer);
                     g.DrawString(stickerData.itemName, Font, fontBrush, stringXIndex, 32 - reducer);
                     g.DrawString(stickerData.date, Font, fontBrush, stringXIndex, 47 - reducer);
-                    g.DrawString(stickerData.code, Font, fontBrush, stringXIndex, 62 - reducer);
+                    g.DrawString(stickerData.code, Font, fontBrush, stringXIndex, 62 - reducer); 
 
-                    //Name, Date, Code
-                    //g2d.setFont(new Font("Arial", Font.PLAIN, 12));
-                    //g2d.drawString(stickerData.getItemName(), stringXIndex, 32);
-                    //g2d.drawString(stickerData.getDate(), stringXIndex, 47);
-                    //g2d.drawString(stickerData.getCode(), stringXIndex, 62);
-
-                    //draw borders
-                    //Stroke oldStroke = g2d.getStroke();
-                    //g2d.setStroke(new BasicStroke(4));
-                    //g2d.drawRect(0, 0, STICKER_WIDTH - 1, STICKER_HEIGHT - 1); //main border
+                    //draw borders 
                     //GENERAL BORDER
-                    g.DrawRectangle(new Pen(Color.Black, 4), 0, 0, STICKER_WIDTH - 1, STICKER_HEIGHT - 1);
+                    Pen outerPen = new Pen(Color.Black, 4);
+                    Pen contentPen = new Pen(Color.Black, 1);
 
-                    Pen pen2 = new Pen(Color.Black, 1); 
-                    //g.DrawRectangle(pen, 0, 0, STICKER_HEIGHT, STICKER_HEIGHT);
-
+                    g.DrawRectangle(outerPen, 0, 0, STICKER_WIDTH - 1, STICKER_HEIGHT - 1);  
                     //contents borders
                     int borderXIndex = STICKER_WIDTH - STICKER_HEIGHT;
-                    g.DrawRectangle(pen2, STICKER_HEIGHT, 0, borderXIndex, 18); //institution
-                    g.DrawRectangle(pen2, STICKER_HEIGHT, 18, borderXIndex, 16); //name
-                    g.DrawRectangle(pen2, STICKER_HEIGHT, 34, borderXIndex, 16); //date
-                    g.DrawRectangle(pen2, STICKER_HEIGHT, 50, borderXIndex, 16); //code 
+                    g.DrawRectangle(contentPen, STICKER_HEIGHT, 0, borderXIndex, 18); //institution
+                    g.DrawRectangle(contentPen, STICKER_HEIGHT, 18, borderXIndex, 16); //name
+                    g.DrawRectangle(contentPen, STICKER_HEIGHT, 34, borderXIndex, 16); //date
+                    g.DrawRectangle(contentPen, STICKER_HEIGHT, 50, borderXIndex, 16); //code 
 
-                    string fullPath = saveToPath + "/" + stickerData.itemName + ".png";
-                    BM.Save(fullPath, ImageFormat.Png);
+                    string fullPath = saveToPath + "/" + stickerData.itemName + "_" + count + ".png";
+                    Canvas.Save(fullPath, ImageFormat.Png);
+
                     Debug.WriteLine("SUCCESS SAVING IMAGE:" + fullPath);
+                    count++;
 
                 }
 
