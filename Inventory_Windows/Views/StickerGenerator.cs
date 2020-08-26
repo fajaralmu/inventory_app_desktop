@@ -112,6 +112,7 @@ namespace Inventory_Windows.Views
                     code = "CODE" + i,
                     institution = institution
                 };
+                result.Add(data);
             }
             return result;
         }
