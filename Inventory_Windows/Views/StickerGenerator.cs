@@ -81,13 +81,15 @@ namespace Inventory_Windows.Views
 
         private void generateStickers()
         {
-            if(saveToPath == null || saveToPath.Equals(""))
+            if (saveToPath == null || saveToPath.Equals(""))
             {
                 MyDialog.info("Please choose folder to save file");
                 return;
             }
             List<StickerData> stickerData = getStickerData();
-            Generator.generateSticker(stickerData, institution, saveToPath);
+
+            Generator Generator = new Generator(institution, saveToPath);
+            Generator.generateSticker(stickerData);
         }
 
         private List<StickerData> getStickerData()

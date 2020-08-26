@@ -11,3 +11,4 @@ D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Debug\Inv
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Debug\Resources\ALKAHFI.png
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Debug\Resources\kiis.jpg
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Debug\Resources\kiis.png
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Debug\Inventory_Windows.csprojResolveAssemblyReference.cache
