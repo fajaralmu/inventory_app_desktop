@@ -51,6 +51,7 @@
     <Compile Include="Models\StickerData.cs" />
     <Compile Include="Utils\Generator.cs" />
     <Compile Include="Utils\MyDialog.cs" />
+    <Compile Include="Utils\ThreadUtil.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>

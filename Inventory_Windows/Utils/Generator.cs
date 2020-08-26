@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Reflection;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Inventory_Windows.Utils
 {
@@ -13,6 +14,7 @@ namespace Inventory_Windows.Utils
     {
         static Random random = new Random();
         private Institution institution;
+        private ProgressBar progressBar;
         private string saveToPath;
 
 
@@ -25,10 +27,28 @@ namespace Inventory_Windows.Utils
         private int count = 0;
 
 
-        public Generator(Institution institution, string saveToPath)
+        public Generator(Institution institution, string saveToPath, ProgressBar progressBar)
         {
             this.institution = institution;
             this.saveToPath = saveToPath;
+            this.progressBar = progressBar;
+        }
+
+        private void addProgress(int val)
+        {
+            if (null == progressBar)
+            {
+                return;
+            }
+            int currentValue = progressBar.Value;
+            if (currentValue + val < 100)
+            {
+                progressBar.Value = (currentValue + val);
+            }
+            else {
+                progressBar.Value = (100);
+            }
+
         }
 
         string randomNumber()
@@ -47,6 +67,7 @@ namespace Inventory_Windows.Utils
                 {
                     Image sticker = generateOneSticker(stickerData[i]);
                     images.Add(sticker);
+                    addProgress((80 / stickerData.Count));
                 }
                 combineStickers(images);
                 Process.Start("explorer.exe", @saveToPath);
@@ -162,7 +183,7 @@ namespace Inventory_Windows.Utils
         {
             try
             {
-                Type t = institution.GetType(); 
+                Type t = institution.GetType();
                 Debug.WriteLine("TYPE: " + t.Name);
                 Debug.WriteLine("props Count: " + t.GetMembers().Length);
                 MemberInfo[] memberInfos = t.GetMember(institution.ToString());

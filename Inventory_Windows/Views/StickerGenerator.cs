@@ -15,6 +15,8 @@ namespace Inventory_Windows.Views
     public partial class StickerGenerator : Form
     {
         public Institution institution { get; set; }
+        private const int MAX_PROGRESS = 100;
+        private const int MIN_PROGRESS = 0;
         private Form parent;
         //private FolderBrowserDialog folderChooser;
         private string saveToPath;
@@ -23,10 +25,18 @@ namespace Inventory_Windows.Views
         {
             InitializeComponent();
             this.parent = parent;
+
+            initProgressBar();
+          
             //this.folderChooser = new FolderBrowserDialog();
         }
 
-
+        private void initProgressBar()
+        {
+            progressBar.Maximum = MAX_PROGRESS;
+            progressBar.Minimum = MIN_PROGRESS;
+            progressBar.Hide();
+        }
 
         public void ShowPage()
         {
@@ -76,26 +86,44 @@ namespace Inventory_Windows.Views
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            generateStickers();
+            progressBar.Show();
+            ThreadUtil.InvokeAsync(this, (f) =>
+            {
+                generateStickers();
+            }); 
         }
+
 
         private void generateStickers()
         {
+            progressBar.Value = MIN_PROGRESS;
             if (saveToPath == null || saveToPath.Equals(""))
             {
                 MyDialog.info("Please choose folder to save file");
                 return;
             }
-            List<StickerData> stickerData = getStickerData();
+            try {
+                List<StickerData> stickerData = getStickerData();
 
-            if(stickerData.Count == 0)
+                if (stickerData.Count == 0)
+                {
+                    MyDialog.info("Sticker Data Cannot be NULL");
+                    return;
+                }
+
+                Generator Generator = new Generator(institution, saveToPath, progressBar);
+                progressBar.Value = 10;
+                Generator.generateSticker(stickerData);
+            }catch(Exception e)
             {
-                MyDialog.info("Sticker Data Cannot be NULL");
-                return;
-            }
 
-            Generator Generator = new Generator(institution, saveToPath);
-            Generator.generateSticker(stickerData);
+            }
+            finally
+            {
+               
+            }
+            progressBar.Value = MAX_PROGRESS;
+            progressBar.Hide();
         }
 
         private List<StickerData> getStickerData()
