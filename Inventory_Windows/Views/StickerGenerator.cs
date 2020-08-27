@@ -96,6 +96,10 @@ namespace Inventory_Windows.Views
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            if(!MyDialog.confirm("Do you want to generate stickers?"))
+            {
+                return;
+            }
             progressBar.Show();
             ThreadUtil.InvokeAsync(this, (f) =>
             {
@@ -175,13 +179,13 @@ namespace Inventory_Windows.Views
         {
             for (int i = 0; i < cells.Count; i++)
             {
-                if(cells[i].Value == null || cells[i].Value.ToString().Trim().Equals(""))
+                if (cells[i].Value == null || cells[i].Value.ToString().Trim().Equals(""))
                 {
                     return true;
                 }
             }
 
-                return false;
+            return false;
         }
 
         private List<StickerData> generateTestData()
@@ -199,6 +203,21 @@ namespace Inventory_Windows.Views
                 result.Add(data);
             }
             return result;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearDataGrid();
+        }
+
+        private void clearDataGrid()
+        {
+            if(!MyDialog.confirm("Do you want to clear all data?"))
+            {
+                return;
+            }
+            datagridView.Rows.Clear();
+            datagridView.Refresh();
         }
     }
 }

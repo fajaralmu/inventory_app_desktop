@@ -41,6 +41,7 @@
             this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Tanggal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,12 +152,23 @@
             this._Kode.HeaderText = "Kode";
             this._Kode.Name = "_Kode";
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(84, 467);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 10;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // StickerGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(524, 473);
+            this.ClientSize = new System.Drawing.Size(524, 499);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.datagridView);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.checkBoxTestMode);
@@ -191,5 +203,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Tanggal;
         private System.Windows.Forms.DataGridViewTextBoxColumn _Kode;
+        private System.Windows.Forms.Button btnClear;
     }
 }
