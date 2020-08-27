@@ -1,0 +1,13 @@
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Inventory_Windows.exe.config
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Resources\ALKAHFI.png
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Resources\kiis.jpg
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Resources\kiis.png
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Inventory_Windows.exe
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\bin\Release\Inventory_Windows.pdb
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.Home.resources
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.Properties.Resources.resources
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.Views.StickerGenerator.resources
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.Welcoming.resources
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.csproj.GenerateResource.Cache
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.exe
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.pdb

@@ -194,6 +194,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtInstitutionName;
         private System.Windows.Forms.Button btnBack;
+
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtSavePath;
         private System.Windows.Forms.Button btnGenerate;

@@ -62,10 +62,15 @@ namespace Inventory_Windows.Views
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (MyDialog.confirm("Do you want to exit?"))
+            if (MyDialog.confirm("Do you want to exit?") == true)
             {
                 Application.Exit();
             }
+            else
+            {
+                return;
+            }
+           
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -218,6 +223,7 @@ namespace Inventory_Windows.Views
             }
             datagridView.Rows.Clear();
             datagridView.Refresh();
+            initDatagridView();
         }
     }
 }
