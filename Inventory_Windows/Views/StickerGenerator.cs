@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,17 @@ namespace Inventory_Windows.Views
             this.parent = parent;
 
             initProgressBar();
-          
+            initDatagridView();
+
             //this.folderChooser = new FolderBrowserDialog();
+        }
+
+        private void initDatagridView()
+        {
+            for (int i = 1; i <= 27; i++)
+            {
+                datagridView.Rows.Add();
+            }
         }
 
         private void initProgressBar()
@@ -90,7 +100,7 @@ namespace Inventory_Windows.Views
             ThreadUtil.InvokeAsync(this, (f) =>
             {
                 generateStickers();
-            }); 
+            });
         }
 
 
@@ -102,7 +112,8 @@ namespace Inventory_Windows.Views
                 MyDialog.info("Please choose folder to save file");
                 return;
             }
-            try {
+            try
+            {
                 List<StickerData> stickerData = getStickerData();
 
                 if (stickerData.Count == 0)
@@ -114,13 +125,14 @@ namespace Inventory_Windows.Views
                 Generator Generator = new Generator(institution, saveToPath, progressBar);
                 progressBar.Value = 10;
                 Generator.generateSticker(stickerData);
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
             finally
             {
-               
+
             }
             progressBar.Value = MAX_PROGRESS;
             progressBar.Hide();
@@ -133,7 +145,43 @@ namespace Inventory_Windows.Views
             {
                 result = generateTestData();
             }
+            else
+            {
+                DataGridViewRowCollection datagridRows = datagridView.Rows;
+                for (int i = 0; i < datagridRows.Count; i++)
+                {
+                    DataGridViewRow datagridRow = datagridRows[i];
+                    DataGridViewCellCollection cells = datagridRow.Cells;
+                    if (isEmptyCells(cells))
+                    {
+                        Debug.WriteLine("ROW " + i + " HAS EMPTY CELLS");
+                        continue;
+                    }
+                    StickerData stickerData = new StickerData
+                    {
+                        itemName = cells[0].Value.ToString(),
+                        date = cells[1].Value.ToString(),
+                        code = cells[2].Value.ToString(),
+                        institution = institution
+                    };
+                    result.Add(stickerData);
+                }
+
+            }
             return result;
+        }
+
+        private bool isEmptyCells(DataGridViewCellCollection cells)
+        {
+            for (int i = 0; i < cells.Count; i++)
+            {
+                if(cells[i].Value == null || cells[i].Value.ToString().Trim().Equals(""))
+                {
+                    return true;
+                }
+            }
+
+                return false;
         }
 
         private List<StickerData> generateTestData()

@@ -37,6 +37,11 @@
             this.btnGenerate = new System.Windows.Forms.Button();
             this.checkBoxTestMode = new System.Windows.Forms.CheckBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.datagridView = new System.Windows.Forms.DataGridView();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Tanggal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Kode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,12 +124,40 @@
             this.progressBar.Size = new System.Drawing.Size(364, 13);
             this.progressBar.TabIndex = 8;
             // 
+            // datagridView
+            // 
+            this.datagridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._Name,
+            this._Tanggal,
+            this._Kode});
+            this.datagridView.Location = new System.Drawing.Point(84, 200);
+            this.datagridView.Name = "datagridView";
+            this.datagridView.Size = new System.Drawing.Size(364, 261);
+            this.datagridView.TabIndex = 9;
+            // 
+            // _Name
+            // 
+            this._Name.HeaderText = "Name";
+            this._Name.Name = "_Name";
+            // 
+            // _Tanggal
+            // 
+            this._Tanggal.HeaderText = "Tanggal";
+            this._Tanggal.Name = "_Tanggal";
+            // 
+            // _Kode
+            // 
+            this._Kode.HeaderText = "Kode";
+            this._Kode.Name = "_Kode";
+            // 
             // StickerGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(524, 473);
+            this.Controls.Add(this.datagridView);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.checkBoxTestMode);
             this.Controls.Add(this.btnGenerate);
@@ -137,6 +170,7 @@
             this.Name = "StickerGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StickerGenerator";
+            ((System.ComponentModel.ISupportInitialize)(this.datagridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +187,9 @@
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.CheckBox checkBoxTestMode;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.DataGridView datagridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Tanggal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Kode;
     }
 }
