@@ -17,12 +17,14 @@ namespace Inventory_Windows.Utils
         private ProgressBar progressBar;
         private string saveToPath;
 
-
+         
         const int STICKER_WIDTH = 188;
         const int STICKER_HEIGHT = 66;
 
-        const int PAPER_HEIGHT = 792;
-        const int PAPER_WIDTH = 622;
+        //const int PAPER_HEIGHT = 792;
+        //const int PAPER_WIDTH = 622;
+        const int PAPER_HEIGHT = (STICKER_HEIGHT + 1)* 15;
+        const int PAPER_WIDTH = (STICKER_WIDTH + 1) * 4;
 
         private int count = 0;
 
@@ -220,12 +222,13 @@ namespace Inventory_Windows.Utils
             {
                 Image stickerImage = stickerImages[i];
 
-                int x = 11 + (STICKER_WIDTH + topAndRightOffset) * xCounter;
-                int y = 24 + (STICKER_HEIGHT + bottomAndLeftOffset) * yCounter; //9
-
+                //int x = 11 + (STICKER_WIDTH + topAndRightOffset) * xCounter;
+                int x = 1 + (STICKER_WIDTH + 1) * xCounter;
+                //int y = 24 + (STICKER_HEIGHT + bottomAndLeftOffset) * yCounter; //9
+                int y =1 + (STICKER_HEIGHT ) * yCounter;
                 g.DrawImage(stickerImage, x, y, stickerImage.Width, stickerImage.Height);
 
-                if (xCounter >= 2)
+                if (xCounter >= 3)
                 {
                     xCounter = -1;
                     yCounter++;

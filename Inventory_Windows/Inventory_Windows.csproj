@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\GeneralProperties.cs" />
     <Compile Include="Models\Institution.cs" />
     <Compile Include="Models\IntitutionInfo.cs" />
     <Compile Include="Models\StickerData.cs" />

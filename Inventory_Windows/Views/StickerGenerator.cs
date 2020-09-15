@@ -1,4 +1,5 @@
-﻿using Inventory_Windows.Models;
+﻿using Inventory_Windows.Constants;
+using Inventory_Windows.Models;
 using Inventory_Windows.Utils;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace Inventory_Windows.Views
 
         private void initDatagridView()
         {
-            for (int i = 1; i <= 27; i++)
+            for (int i = 1; i <= GeneralProperties.STICKER_MAX_COUNT; i++)
             {
                 datagridView.Rows.Add();
             }
@@ -196,7 +197,7 @@ namespace Inventory_Windows.Views
         private List<StickerData> generateTestData()
         {
             List<StickerData> result = new List<StickerData>();
-            for (int i = 1; i <= 27; i++)
+            for (int i = 1; i <= GeneralProperties.STICKER_MAX_COUNT; i++)
             {
                 StickerData data = new StickerData
                 {

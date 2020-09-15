@@ -11,3 +11,4 @@ D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\I
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.csproj.GenerateResource.Cache
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.exe
 D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.pdb
+D:\Development\Kafila Projects\Inventory_Windows\Inventory_Windows\obj\Release\Inventory_Windows.csprojResolveAssemblyReference.cache
